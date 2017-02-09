@@ -2,10 +2,10 @@ var mysql = require('mysql');
 
 function query(sql) {
     var connection = mysql.createConnection({
-        host: '133.130.100.92',
+        host: 'localhost',
         user: 'root',
-        password: 'wenzi_shop_123',
-        database:'wenzi_shop'
+        password: '',
+        database:''
     });
     connection.connect();
     //查询
