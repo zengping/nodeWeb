@@ -2,10 +2,10 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import router from './router'
-import store from './public/store'
-import { http } from './public/appApi'
-import Alertmsg from './public/Alertmsg'
-import Loading from './public/Loading'
+import store from './store'
+import http from './http'
+import Alertmsg from './components/Alertmsg'
+import Loading from './components/Loading'
 import './assets/css/style.css'
 import './assets/bootstrap/css/bootstrap.css'
 
