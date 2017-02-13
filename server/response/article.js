@@ -1,9 +1,28 @@
 var querystring = require("querystring");
 var sql = require("../mysqlQuery");
 
-function root(request, response) {
-    let s = 'SELECT * from a_categories where root_id=0';
-    querySQL(s, response);
+function root(request, response, routes) {
+    getCate(request, response, routes).then((data) => {
+        let ids = [];
+        data.forEach((o) => {
+            ids.push(o.id);
+        });
+        let idlist = ids.join();
+        let start = (routes[4] - 1) * 10
+        let s = 'SELECT * from a_articles where category_id in (' + idlist + ') limit ' + start + ', 10 order by desc';
+        querySQL(s, response);
+    });
+}
+
+function getCate(request, response, routes) {
+    let s = 'SELECT * from a_categories where root_id=' + routes[3];
+    return new Promise(function(resolve, reject) {
+        sql.query(s).then((data) => {
+            resolve(data);
+        }, (err) => {
+            console.log(err);
+        });
+    });
 }
 
 function list(request, response, routes) {

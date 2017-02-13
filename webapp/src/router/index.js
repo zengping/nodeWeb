@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from 'views/article/Home'
+import Category from 'views/article/Category'
 
 Vue.use(Router)
 
@@ -10,6 +11,10 @@ export default new Router({
     {
       path: '/',
       component: Home
+    },
+    {
+      path: '/cate/:cateId',
+      component: Category
     }
   ]
 })

@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="category">
     <div class="container">
         <div id="head">
             <publichead></publichead>
@@ -20,14 +20,14 @@
                         </span>
                     </h2>
                     <ul>
-                        <li class="new" v-for="o in article[i.id]">
-                            <span class="date">{{o.created}}</span>
+                        <!--<li class="new" ng-repeat="o in article[i.ACategory.id]">
+                            <span class="date" ng-bind="o[0]['created']"></span>
                             <span class="title">
-                                <router-link :to="'/articleShow/'+o.id">
-                                    <div>{{o.title}}</div>
-                                </router-link>
+                                <a title="{{o.AArticle.title}}" target="_blank">
+                                    <div ng-bind="o.AArticle.title"></div>
+                                </a>
                             </span>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
             </div>
@@ -51,8 +51,7 @@ import Publicfoot from './Publicfoot'
 export default {
   data () {
     return {
-      cate: [],
-      article: {}
+      cate: []
     }
   },
   components: {
@@ -65,24 +64,8 @@ export default {
   methods: {
     getCate () {
       let self = this
-      this.$root.http.get({api: 'ROOT_CATEGORY', params: {}}).then((res) => {
+      this.$root.http.get({api: 'SECOND_CATEGORY', params: {id: this.$route.params.cateId}}).then((res) => {
         self.cate = res.data
-        let tmp = {}
-        res.data.forEach((o) => {
-          tmp[o.id] = []
-        })
-        self.article = tmp
-        res.data.forEach((o) => {
-          self.getArticle(o.id)
-        })
-      }, (res) => {
-        // error callback
-      })
-    },
-    getArticle (id) {
-      let self = this
-      this.$root.http.get({api: 'ROOT_ARTICLE', params: {id: id, page: 1}}).then((res) => {
-        self.article[id] = res.data
       }, (res) => {
         // error callback
       })

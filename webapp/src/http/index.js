@@ -7,7 +7,11 @@ export default {
     if (o.params.id === undefined) {
       uri = api.api(o.api)
     } else {
-      uri = api.api(o.api) + api.apiJoin + '/' + o.params.id
+      if (o.params.page === undefined) {
+        uri = api.api(o.api) + api.apiJoin + '/' + o.params.id
+      } else {
+        uri = api.api(o.api) + api.apiJoin + '/' + o.params.id + '/' + o.params.page
+      }
     }
     if (o.type === 'get' && Object.keys(o.params).length > 0) {
       uri = uri + '?' + this.p(o.params)
@@ -50,7 +54,7 @@ export default {
           return
         }
         if (res.data.status.code === 800) {
-          o.vm.$store.commit('alertEvent', {
+          store.commit('alertEvent', {
             msg: res.data.status.message,
             callback: () => {
               o.vm.$router.push({ path: '/login' })
@@ -60,7 +64,7 @@ export default {
           return
         }
         if (res.data.status.code === 888) {
-          o.vm.$store.commit('alertEvent', {
+          store.commit('alertEvent', {
             msg: res.data.status.message,
             callback: () => {
               o.vm.$router.push({ path: '/login' })
@@ -73,11 +77,11 @@ export default {
           resolve(res.data)
         } else {
           // reject(res.data.status.message)
-          o.vm.$store.commit('alertEvent', res.data.status.message)
+          store.commit('alertEvent', res.data.status.message)
           resolve(res.data)
         }
       }).catch((res) => {
-        o.vm.$store.commit('alertEvent', res)
+        store.commit('alertEvent', res)
         resolve(res.data)
       })
     })

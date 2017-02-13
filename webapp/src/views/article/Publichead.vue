@@ -6,7 +6,9 @@
             <div class="topNav clearfix">
                 <ul class="navList fl">
                     <li>
-                        <div class="one"><a target="_blank">BTA</a></div>
+                        <div class="one">
+                            <router-link :to="'/'">BTA</router-link>
+                        </div>
                     </li>
                 </ul>
                 <div class="navUser mt5 fr" id=""></div>
@@ -18,7 +20,7 @@
     <div class="main clearfix">
         <div class="mtb10 clearfix">
             <div class="logo">
-                <a><img src="../../assets/img/logo.png" /></a>
+                <router-link :to="'/'"><img src="../../assets/img/logo.png" /></router-link>
             </div>
         </div>
         <!-- 导航-->
