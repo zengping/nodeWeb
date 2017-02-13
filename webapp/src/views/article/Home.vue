@@ -64,7 +64,7 @@ export default {
   methods: {
     getCate () {
       let self = this
-      this.$root.http.get({vm: self, xhr: self.$http, api: 'CATE_GETTER', params: {}}).then((res) => {
+      this.$root.http.get({api: 'CATE_GETTER', params: {}}).then((res) => {
         self.cate = res.data
       }, (res) => {
         // error callback

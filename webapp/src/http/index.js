@@ -1,4 +1,6 @@
 import api from '../api'
+import store from '../store'
+import axios from 'axios'
 export default {
   getUrl (o) {
     let uri
@@ -39,9 +41,9 @@ export default {
   xhr (o) {
     let self = this
     return new Promise((resolve, reject) => {
-      if (o.loading) o.vm.$store.commit('showLoading')
-      o.xhr[api.type[o.type]](self.getUrl(o), o.params).then((res) => {
-        o.vm.$store.commit('hideLoading')
+      if (!o.loading) store.commit('showLoading')
+      axios[o.type](self.getUrl(o), o.params).then((res) => {
+        store.commit('hideLoading')
         if (res.data.status.code === 600) {
           o.vm.$router.push({ path: '/login' })
           resolve(res.data)
@@ -74,8 +76,7 @@ export default {
           o.vm.$store.commit('alertEvent', res.data.status.message)
           resolve(res.data)
         }
-      }, (res) => {
-        // console.error('Failed!', res)
+      }).catch((res) => {
         o.vm.$store.commit('alertEvent', res)
         resolve(res.data)
       })

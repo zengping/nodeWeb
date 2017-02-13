@@ -4,50 +4,29 @@
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
+import loading from './loading'
+import alertmsg from './alertmsg'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
-  state: {
-      // loading状态
-    loading: false,
-    alertMsg: {
-      status: false,
-      msg: null,
-      btn: 0,
-      callback: {}
+let status = {
+  state: {},
+  mutations: {},
+  actions: {}
+}
+
+status = objAdd(status, loading)
+status = objAdd(status, alertmsg)
+
+function objAdd (a, b) {
+  Object.keys(a).forEach((o) => {
+    for (let i in b[o]) {
+      a[o][i] = b[o][i]
     }
-  },
-  mutations: {
-    // loading
-    showLoading (state) {
-      state.loading = true
-    },
-    hideLoading (state) {
-      state.loading = false
-    },
-    // 弹框
-    alertEvent (state, obj) {
-      let msg
-      let callback
-      let btn
-      if (typeof obj === 'object') {
-        msg = obj.msg
-        callback = obj.callback
-        btn = obj.btn
-      } else {
-        msg = obj
-      }
-      state.alertMsg = {
-        status: true,
-        msg: msg,
-        btn: btn,
-        callback: callback
-      }
-    }
-  },
-  actions: {
-  }
-})
+  })
+  return a
+}
+
+const store = new Vuex.Store(status)
 
 export default store
