@@ -9,7 +9,7 @@ function root(request, response, routes) {
         });
         let idlist = ids.join();
         let start = (routes[4] - 1) * 10
-        let s = 'SELECT * from a_articles where category_id in (' + idlist + ') limit ' + start + ', 10 order by desc';
+        let s = 'SELECT * from a_articles where category_id in (' + idlist + ') order by id desc limit ' + start + ', 10';
         querySQL(s, response);
     });
 }
