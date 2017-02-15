@@ -12,7 +12,6 @@ module.exports = {
             return query;
         });
     },
-
     render(res) {
         if (res.serverStatus == 1) {
             res.write(JSON.stringify(res.okMsg));
