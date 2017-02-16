@@ -21,7 +21,7 @@
                     </h2>
                     <ul>
                         <li class="new" v-for="o in article[i.id]">
-                            <span class="date">{{o.created}}</span>
+                            <span class="date">{{o.created | timeFormat}}</span>
                             <span class="title">
                                 <router-link :to="'/articleShow/'+o.id">
                                     <div>{{o.title}}</div>
