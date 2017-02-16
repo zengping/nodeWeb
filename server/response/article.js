@@ -3,9 +3,7 @@ var sql = require("../mysqlQuery");
 module.exports = {
     async root(request, response, routes) {
         let cate = await this.getCate(routes);
-        console.log(cate);
         let article = await this.getArticle(cate, routes);
-        console.log(article)
         return article;
     },
     async getCate(routes) {
