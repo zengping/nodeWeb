@@ -64,7 +64,7 @@ export default {
   methods: {
     getCate () {
       let self = this
-      this.$root.http.get({api: 'SECOND_CATEGORY', params: {id: this.$route.params.cateId}}).then((res) => {
+      this.$http.get({api: 'SECOND_CATEGORY', params: {id: this.$route.params.cateId}}).then((res) => {
         self.cate = res.data
       }, (res) => {
         // error callback

@@ -65,7 +65,7 @@ export default {
   methods: {
     getCate () {
       let self = this
-      this.$root.http.get({api: 'ROOT_CATEGORY', params: {}}).then((res) => {
+      this.$http.get({api: 'ROOT_CATEGORY', params: {}}).then((res) => {
         self.cate = res.data
         let tmp = {}
         res.data.forEach((o) => {
@@ -81,7 +81,7 @@ export default {
     },
     getArticle (id) {
       let self = this
-      this.$root.http.get({api: 'ROOT_ARTICLE', params: {id: id, page: 1}}).then((res) => {
+      this.$http.get({api: 'ROOT_ARTICLE', params: {id: id, page: 1}}).then((res) => {
         self.article[id] = res.data
       }, (res) => {
         // error callback
