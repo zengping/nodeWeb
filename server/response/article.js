@@ -7,7 +7,7 @@ module.exports = {
         return article;
     },
     async getCate(routes) {
-        let s = `SELECT * from a_categories where root_id=${routes[3]}`;
+        let s = `select * from a_categories where root_id=${routes[3]}`;
         return await sql.query(s);
     },
     async getArticle(cate, routes) {
@@ -17,11 +17,16 @@ module.exports = {
         });
         let idlist = ids.join();
         let start = (routes[4] - 1) * 10
-        let s = `SELECT * from a_articles where category_id in (${idlist}) order by id desc limit ${start}, 10`;
+        let s = `select * from a_articles where category_id in (${idlist}) order by id desc limit ${start}, 10`;
         return await sql.query(s);
     },
     async list(request, response, routes) {
-        let s = 'SELECT * from a_categories where root_id=' + routes[3];
+        let start = (routes[4] - 1) * 10
+        let s = `select * from a_articles where category_id=${routes[3]} order by id desc limit ${start}, 10`;
+        return await sql.query(s);
+    },
+    async info(request, response, routes) {
+        let s = `select * from a_articles where id=${routes[3]}`;
         return await sql.query(s);
     }
 }

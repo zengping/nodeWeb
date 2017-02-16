@@ -20,7 +20,7 @@
     <div class="main clearfix">
         <div class="mtb10 clearfix">
             <div class="logo">
-                <router-link :to="'/'"><img src="../../assets/img/logo.png" /></router-link>
+                <router-link :to="'/'"><img src="../assets/img/logo.png" /></router-link>
             </div>
         </div>
         <!-- 导航-->
@@ -33,7 +33,7 @@
         <!--导航结束-->
         <div class="subnav clearfix">
             <ul>
-                <li><a title="javascript" target="_blank">javascript</a></li>
+                <!--<li><a title="javascript" target="_blank">javascript</a></li>-->
             </ul>
         </div>
     </div>
@@ -43,8 +43,8 @@
             <div class="box mb15 mt10">
                 <i class="icon"></i> 您的位置：
                 <router-link :to="'/'">首页</router-link> → 
-                <a>123</a> → 
-                <a>123</a> → 
+                <a>js</a> → 
+                <a>javascript</a> → 
                 正文内容
             </div>
         </div>

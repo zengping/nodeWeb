@@ -19,7 +19,9 @@ function api (code) {
     'LOGIN': APP_DEV_ENV ? (DEV_TEST ? '/api/sys/login' : './static/jsons/onoff.json') : 'sys/login',
     'ROOT_CATEGORY': APP_DEV_ENV ? (DEV_TEST ? '/api/category/root' : './static/jsons/onoff.json') : 'category/list',
     'ROOT_ARTICLE': APP_DEV_ENV ? (DEV_TEST ? '/api/article/root' : './static/jsons/onoff.json') : 'category/list',
-    'SECOND_CATEGORY': APP_DEV_ENV ? (DEV_TEST ? '/api/category/list' : './static/jsons/onoff.json') : 'category/list'
+    'SECOND_CATEGORY': APP_DEV_ENV ? (DEV_TEST ? '/api/category/list' : './static/jsons/onoff.json') : 'category/list',
+    'CATE_ARTICLE_LIST': APP_DEV_ENV ? (DEV_TEST ? '/api/article/list' : './static/jsons/onoff.json') : 'category/list',
+    'ARTICLE_INFO': APP_DEV_ENV ? (DEV_TEST ? '/api/article/info' : './static/jsons/onoff.json') : 'category/list'
   }
   return appApi[code]
 }
