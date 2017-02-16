@@ -6,7 +6,7 @@ import Home from 'views/article/Home'
 import Category from 'views/article/Category'
 
 Vue.use(Router)
-Vue.filter('timeFormat', filters.timeFormat)
+filters.init(Vue)
 Vue.prototype.$http = http
 
 export default new Router({
